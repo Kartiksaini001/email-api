@@ -5,19 +5,19 @@ const app = express();
 
 app.use(express.json());
 
+const transporter = nodemailer.createTransport({
+  host: "smtp.ethereal.email",
+  port: 587,
+  auth: {
+    user: "michael.howe3@ethereal.email",
+    pass: "Rk31Khj71X7wSKtYgp",
+  },
+});
+
 app.post("/", async (req, res) => {
   const { to, email_body } = req.body;
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      auth: {
-        user: "michael.howe3@ethereal.email",
-        pass: "Rk31Khj71X7wSKtYgp",
-      },
-    });
-
     let message = {
       from: "michael.howe3@ethereal.email",
       to: to,
